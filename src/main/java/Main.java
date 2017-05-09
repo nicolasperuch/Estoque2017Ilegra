@@ -65,12 +65,15 @@ public class Main {
 	public static void fazerVenda(){
 	
 		Venda venda = new Venda();
+		int fkItem;
 		
 		venda = entradaDeDadosVenda();
 		if(validarVenda(venda)){
 			VendaDAO vendaDAO = new VendaDAO();
-			vendaDAO.fazerVenda(venda);
-			ItemDAO.update(venda);
+			
+			fkItem = ItemDAO.buscarFkItem(venda);
+			vendaDAO.fazerVenda(venda, fkItem);
+			ItemDAO.update(venda, fkItem);
 			System.out.printf("\n\tVenda efetuada com sucesso!\n");
 		}else{
 			System.out.println("\n\tNão foi possivel efetuar a venda!\n");
@@ -104,7 +107,7 @@ public class Main {
 		Item item = new Item();
 		
 		item = itemDAO.buscaItem(venda);
-		venda.setPrecoVenda(item.getPrecoVenda());
+		
 		if(item.getQuantidade()> venda.getQuantidade()){
 			return true;
 		}else{
@@ -112,6 +115,8 @@ public class Main {
 			return false;
 		}
 	}
+	
+
 	
 	public static Item entradaDeDadosItem(){
 		

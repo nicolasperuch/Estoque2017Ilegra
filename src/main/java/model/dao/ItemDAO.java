@@ -63,8 +63,31 @@ public class ItemDAO {
 			ConnectionFactory.closeConnection(con, stmt, rs);
 		}
 	}
+	
+	public static int buscarFkItem(Venda venda){
+		Connection con = ConnectionFactory.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			stmt = con.prepareStatement("SELECT * FROM item");
+			rs = stmt.executeQuery();
+			while(rs.next()){
+				if(rs.getString("nome").equalsIgnoreCase(venda.getNome())){
+					return rs.getInt("id_item");
+				}
+			}
+		}catch (SQLException e) {
+			System.out.println("buscarFkItem: "+e);
+		}finally {
+			ConnectionFactory.closeConnection(con, stmt, rs);
+		}
+		return 0;
+		
+		
+	}
 
-	public static void update(Venda venda){
+	public static void update(Venda venda,int fkIdItem){
 
 		Item item = new Item();
 		
@@ -73,12 +96,12 @@ public class ItemDAO {
 		
 		
 		try {
-			stmt = con.prepareStatement("update item set quantidade = (?) where nome = (?)");
+			stmt = con.prepareStatement("update item set quantidade = (?) where id_item = (?)");
 
 			item = buscaItem(venda);
 			
 			stmt.setInt(1, item.getQuantidade() - venda.getQuantidade());
-			stmt.setString(2, item.getNome());
+			stmt.setInt(2, fkIdItem);
 			
 
 			stmt.executeUpdate();

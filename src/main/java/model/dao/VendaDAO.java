@@ -13,22 +13,21 @@ import model.ConnectionFactory;
 
 public class VendaDAO {
 
-	public void fazerVenda(Venda venda){
+	public void fazerVenda(Venda venda, int fkItem){
 
 		Connection con = ConnectionFactory.getConnection();
 		PreparedStatement stmt = null;
 
 		try {
-			stmt = con.prepareStatement("INSERT INTO venda (nome, quantidade, preco_venda) VALUES (?,?,?);");
+			stmt = con.prepareStatement("INSERT INTO venda (quantidade, fk_item ) VALUES (?,?);");
 
-			stmt.setString(1, venda.getNome());
-			stmt.setInt(2, venda.getQuantidade());
-			stmt.setDouble(3, venda.getPrecoVenda());
-
+			stmt.setInt(1, venda.getQuantidade());
+			stmt.setInt(2, fkItem);
+			
 			stmt.executeUpdate();
 			
 	    } catch (SQLException ex){
-	    	System.out.println(ex);
+	    	System.out.println("VendaDAO"+ex);
 		}finally{
 			ConnectionFactory.closeConnection(con, stmt);
 		}

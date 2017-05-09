@@ -43,9 +43,11 @@ public class Item {
 		String quantidade;
 		String precoCompra;
 		String precoVenda;
+		String nome;
 		
 		
-		tamanho = TABULAMENTO - nome.length();
+		nome = this.nome;
+		tamanho = TABULAMENTO - this.nome.length();
 		for(int i=0; i< tamanho; i++)
 			nome += " ";
 		
