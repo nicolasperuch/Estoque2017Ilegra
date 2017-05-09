@@ -24,11 +24,14 @@ public class Main {
 				case 3:
 					exibirEstoque();
 				break;
-				default:
-				System.out.println("\n Opcao Invalida");
+				case 4:
+					exibirRelatorioVendas();
 				break;
 				case 0:
 				System.out.println("\n Obrigado por utilizar nosso sistema!\n\n");
+				break;
+				default:
+				System.out.println("\n Opcao Invalida");
 				break;
 			}
 			
@@ -40,7 +43,7 @@ public class Main {
 	
 	public static int menu(){
 		Scanner input = new Scanner(System.in);
-		System.out.printf("\n\tSISTEMA DE ESTOQUE\n\n 1 - Inserir item ao estoque\n 2 - Fazer Venda\n 3 - Exibir Estoque\n\n 0 - Sair\n\n\n Insira a opcao desejada: ");
+		System.out.printf("\n\tSISTEMA DE ESTOQUE\n\n 1 - Inserir item ao estoque\n 2 - Fazer Venda\n 3 - Exibir Estoque\n 4 - Exibir Relatorio de Vendas\n\n 0 - Sair\n\n\n Insira a opcao desejada: ");
 		return input.nextInt();
 	}
 	
@@ -100,7 +103,7 @@ public class Main {
 		Item item = new Item();
 		
 		item = itemDAO.buscaItem(venda);
-		
+		venda.setPrecoVenda(item.getPrecoVenda());
 		if(item.getQuantidade()> venda.getQuantidade()){
 			return true;
 		}else{
@@ -139,4 +142,10 @@ public class Main {
 		return venda;
 	}
 	
+	public static void exibirRelatorioVendas(){
+		VendaDAO vendaDAO = new VendaDAO();
+		
+		vendaDAO.listar();
+		
+	}
 }
