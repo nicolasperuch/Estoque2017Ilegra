@@ -37,10 +37,34 @@ public class Item {
 		this.precoVenda = precoVenda;
 	}
 	
-	@Override
-	public String toString() {
-		return "Item [nome=" + nome + ", quantidade=" + quantidade + ", precoCompra=" + precoCompra + ", precoVenda="
-				+ precoVenda + "]";
+	public String configurarImpressao() {
+		int tamanho;
+		int TABULAMENTO = 25;
+		String quantidade;
+		String precoCompra;
+		String precoVenda;
+		
+		
+		tamanho = TABULAMENTO - nome.length();
+		for(int i=0; i< tamanho; i++)
+			nome += " ";
+		
+		quantidade = String.valueOf(this.quantidade);
+		tamanho = TABULAMENTO - quantidade.length();
+		for(int i=0; i< tamanho; i++)
+			quantidade += " ";
+		
+		precoCompra = String.valueOf(this.precoCompra);
+		tamanho = TABULAMENTO - precoCompra.length();
+		for(int i=0; i< tamanho; i++)
+			precoCompra += " ";
+		
+		precoVenda = String.valueOf(this.precoVenda);
+		tamanho = TABULAMENTO - precoVenda.length();
+		for(int i=0; i< tamanho; i++)
+			precoVenda += " ";
+		
+		return  nome + quantidade + precoCompra	+ precoVenda;
 	}
 
 	public boolean verificarItemNome(){
