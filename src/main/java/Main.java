@@ -74,10 +74,11 @@ public class Main {
 		if(dados.validarVenda(venda)){
 			
 			VendaDAO vendaDAO = new VendaDAO();
+			ItemDAO itemDAO = new ItemDAO();
 			
 			fkItem = ItemDAO.buscarFkItem(venda);
+			itemDAO.update(venda, fkItem);
 			vendaDAO.fazerVenda(venda, fkItem);
-			ItemDAO.update(venda, fkItem);
 			System.out.printf("\n\tVenda efetuada com sucesso!\n");
 		}else{
 			System.out.println("\n\tNão foi possivel efetuar a venda!\n");
@@ -92,15 +93,8 @@ public class Main {
 	}
 	
 
-
-	
-
-
-	
 	public static void exibirRelatorioVendas(){
-		VendaDAO vendaDAO = new VendaDAO();
-		
-		vendaDAO.listar();
-		
+		VendaDAO vendaDAO = new VendaDAO();	
+		vendaDAO.listar();	
 	}
 }

@@ -38,7 +38,7 @@ public class ItemDAO {
 		}
 	}
 	
-	public static Item buscaItem (Venda venda){
+	public Item buscaItem (Venda venda){
 		Connection con = ConnectionFactory.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -51,13 +51,15 @@ public class ItemDAO {
 				if (rs.getString("nome").equals(venda.getNome())) {
 					item.setNome(rs.getString("nome"));
 					item.setQuantidade(rs.getInt("quantidade"));
-					item.setPrecoVenda(rs.getDouble("preco_venda"));
-					break;
+					//item.setPrecoVenda(rs.getDouble("preco_venda"));
+					return item;
 				}
 			}
-			return item;
-
+			
+		return item;
+		
 		}catch(SQLException e){
+			System.out.println("\nbuscaItem ERRO: "+e);
 			return item;
 		}finally{
 			ConnectionFactory.closeConnection(con, stmt, rs);
@@ -87,7 +89,7 @@ public class ItemDAO {
 		
 	}
 
-	public static void update(Venda venda,int fkIdItem){
+	public void update(Venda venda,int fkIdItem){
 
 		Item item = new Item();
 		

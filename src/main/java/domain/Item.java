@@ -9,9 +9,9 @@ public class Item {
 	private double precoCompra;
 	private double precoVenda;
 	
-	public Item(){}
-
-	
+	public Item(){
+		this.nome = "";
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -37,6 +37,11 @@ public class Item {
 		this.precoVenda = precoVenda;
 	}
 	
+	@Override
+	public String toString() {
+		return "Item [nome=" + nome + ", quantidade=" + quantidade + ", precoCompra=" + precoCompra + ", precoVenda="
+				+ precoVenda + "]";
+	}
 	public String configurarImpressaoEstoque() {
 		int tamanho;
 		int TABULAMENTO = 25;

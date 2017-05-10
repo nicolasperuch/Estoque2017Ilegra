@@ -25,13 +25,12 @@ public class DadosVenda {
 		
 		item = itemDAO.buscaItem(venda);
 		
-		if(item.getQuantidade()> venda.getQuantidade()){
+		if(item.getQuantidade()> venda.getQuantidade() && venda.getQuantidade() > 0)
 			return true;
-		}else{
-			System.out.println("\n\tOcorreu um erro durante a venda\n\n");
-			return false;
+
+		System.out.println("\nA quantidade de venda deve ser menor que a do estoque e maior que 0.\n\n");
+		return false;
 		}
 	}
 	
 
-}
