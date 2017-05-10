@@ -117,8 +117,9 @@ public class ItemDAO {
 
 	
 	public void listar(){
+		Item cabecario = new Item();
+		cabecario.imprimirCabecario();
 		
-		System.out.println("\n\t\t\t\t\tESTOQUE\n\nNOME                     QUANTIDADE               PRECO VENDA              PRECO COMPRA   ");
 		for(Item item : getList()){
 			System.out.println(item.configurarImpressaoEstoque());
 		}
@@ -150,7 +151,7 @@ public class ItemDAO {
 			return itens;
 			
 		}catch(SQLException ex){
-			System.out.println(ex);
+			System.out.println("getList ERRO: "+ex);
 			return itens;
 		}finally{
 			ConnectionFactory.closeConnection(con, stmt);

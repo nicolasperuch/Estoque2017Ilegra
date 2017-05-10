@@ -21,6 +21,9 @@ public class Venda {
 	public String toString() {
 		return "Venda [nome=" + nome + ", quantidade=" + quantidade + "]";
 	}
+	public void imprimirCabecario() {
+		System.out.println("\n\t\t\t\t\tVENDAS\n\nNOME                     QUANTIDADE               GASTO TOTAL              VALOR BRUTO OBTIDO       LUCRO");
+	}
 	
 	
 }

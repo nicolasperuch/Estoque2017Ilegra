@@ -34,8 +34,8 @@ public class VendaDAO {
 	}
 	
 	public void listar(){
-		
-		System.out.println("\n\t\t\t\t\tVENDAS\n\nNOME                     QUANTIDADE               GASTO TOTAL              VALOR BRUTO OBTIDO       LUCRO");
+		Venda cabecario = new Venda();
+		cabecario.imprimirCabecario();
 		for(Item item : getList()){
 			System.out.println(item.configurarImpressaoVenda());
 		}

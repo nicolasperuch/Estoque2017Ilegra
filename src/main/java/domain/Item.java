@@ -154,5 +154,8 @@ public class Item {
 		System.out.println("\nERRO: O valor de venda deve ser superior ao valor de compra");
 		return false;
 	}
+	public void imprimirCabecario() {
+		System.out.println("\n\t\t\t\t\tESTOQUE\n\nNOME                     QUANTIDADE               PRECO VENDA              PRECO COMPRA   ");
+	}
 
 }
