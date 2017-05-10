@@ -28,7 +28,6 @@ public class ItemDAO {
 
 			stmt.executeUpdate();
 
-			
 			return true;
 	    } catch (SQLException ex){
 	    	System.out.println("Erro no cadastro do item: "+ex);
