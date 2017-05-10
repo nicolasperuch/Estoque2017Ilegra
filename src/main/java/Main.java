@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+import domain.DadosVenda;
 import domain.Item;
 import domain.Venda;
 import model.dao.ItemDAO;
@@ -65,10 +66,13 @@ public class Main {
 	public static void fazerVenda(){
 	
 		Venda venda = new Venda();
+		DadosVenda dados = new DadosVenda();
+		
 		int fkItem;
 		
-		venda = entradaDeDadosVenda();
-		if(validarVenda(venda)){
+		venda = dados.entradaDeDadosVenda();
+		if(dados.validarVenda(venda)){
+			
 			VendaDAO vendaDAO = new VendaDAO();
 			
 			fkItem = ItemDAO.buscarFkItem(venda);
@@ -100,20 +104,7 @@ public class Main {
 		return false;
 	}
 	
-	public static boolean validarVenda (Venda venda){
-		ItemDAO itemDAO = new ItemDAO();
-		Item item = new Item();
-		
-		item = itemDAO.buscaItem(venda);
-		
-		if(item.getQuantidade()> venda.getQuantidade()){
-			return true;
-		}else{
-			System.out.println("\n\tOcorreu um erro durante a venda\n\n");
-			return false;
-		}
-	}
-	
+
 
 	
 	public static Item entradaDeDadosItem(){
@@ -133,18 +124,7 @@ public class Main {
 		return item;
 	}
 	
-	public static Venda entradaDeDadosVenda(){
-		
-		Scanner input = new Scanner(System.in);
-		Venda venda = new Venda();
-		
-		System.out.printf("\n\tVENDA\nInsira o nome do item que deseja vender: ");
-		venda.setNome(input.nextLine());
-		System.out.printf("Insira a quantidade que deseja vender: ");
-		venda.setQuantidade(input.nextInt());
-		
-		return venda;
-	}
+
 	
 	public static void exibirRelatorioVendas(){
 		VendaDAO vendaDAO = new VendaDAO();

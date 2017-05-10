@@ -66,7 +66,7 @@ public class Item {
 		for(int i=0; i< tamanho; i++)
 			precoVenda += " ";
 		
-		return  nome + quantidade + precoCompra	+ precoVenda;
+		return  nome + quantidade + precoVenda + precoCompra;
 	}
 	
 	public String configurarImpressaoVenda() {
