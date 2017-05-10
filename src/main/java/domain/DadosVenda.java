@@ -28,7 +28,7 @@ public class DadosVenda {
 		if(item.getQuantidade()> venda.getQuantidade() && venda.getQuantidade() > 0)
 			return true;
 
-		System.out.println("\nA quantidade de venda deve ser menor que a do estoque e maior que 0.\n\n");
+		System.out.println("A quantidade de venda deve ser menor que a do estoque e maior que 0.\n\n");
 		return false;
 		}
 	}

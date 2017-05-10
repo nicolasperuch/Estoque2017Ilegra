@@ -55,7 +55,7 @@ public class ItemDAO {
 					return item;
 				}
 			}
-			
+		System.out.println("\nItem nao encontrado.");
 		return item;
 		
 		}catch(SQLException e){
@@ -109,7 +109,7 @@ public class ItemDAO {
 			stmt.executeUpdate();
 
 	    } catch (SQLException ex){
-	        System.out.println(ex);
+	        System.out.println("Update ERRO: "+ex);
 		}finally{
 			ConnectionFactory.closeConnection(con, stmt);
 		}

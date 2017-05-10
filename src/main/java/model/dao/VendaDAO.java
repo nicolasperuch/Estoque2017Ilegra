@@ -27,7 +27,7 @@ public class VendaDAO {
 			stmt.executeUpdate();
 			
 	    } catch (SQLException ex){
-	    	System.out.println("VendaDAO"+ex);
+	    	System.out.println("VendaDAO ERRO: "+ex);
 		}finally{
 			ConnectionFactory.closeConnection(con, stmt);
 		}
