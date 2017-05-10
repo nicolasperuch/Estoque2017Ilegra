@@ -21,16 +21,11 @@ public class DadosItem {
 		return item;
 	}
 	
-	public static boolean validarDados(Item item){
-		if(item.verificarItemNome()){
-			if(item.verificarItemQuantidade()){
-				if(item.verificarItemPrecoCompra()){
-					if(item.verificarItemPrecoVenda()){
+	public boolean validarDados(Item item){
+		if(item.verificarItemNome() && item.verificarItemQuantidade())
+			if(item.verificarItemPrecoCompra() && item.verificarItemPrecoVenda())
 						return true;
-					}
-				}
-			}
-		}
+						
 		return false;
 	}
 	

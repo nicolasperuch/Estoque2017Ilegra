@@ -114,45 +114,40 @@ public class Item {
 
 	public boolean verificarItemNome(){
 		if(StringUtils.length(getNome()) > 3 ){
-			if(StringUtils.containsAny(getNome(), '0','1','2','3','4','5','6','7','8','9' )){
-				return false;
-			}else{
+			if(!StringUtils.containsAny(getNome(), '0','1','2','3','4','5','6','7','8','9' )){
 				return true;
+			}else{
+				System.out.println("O nome nao pode conter numeros.");
+				return false;
 			}
 		}else{
+			System.out.println("O numero conter mais de 3 letras.");
 			return false;
 		}
 	}
 
 	public boolean verificarItemQuantidade(){
-		if(getQuantidade() > 0 ){
+		if(getQuantidade() > 0 )
 			return true;
-		}else{
-			return false;
-		}
+			
+		System.out.println("A quantidade deve ser maior que 0.");	
+		return false;
 	}
 	
 	public boolean verificarItemPrecoCompra(){
-		if(getPrecoCompra() > 0 ){
+		if(getPrecoCompra() > 0 )
 			return true;
-		}else{
-			return false;
-		}
-		
+	
+		System.out.println("O valor de compra deve ser maior que 0.");
+		return false;
 	}
 	
 	public boolean verificarItemPrecoVenda(){
-		if(getPrecoCompra() < getPrecoVenda()){
+		if(getPrecoCompra() < getPrecoVenda())
 			return true;
-		}else{
-			return false;
-		}
+
+		System.out.println("O valor de venda deve ser superior ao valor de compra");
+		return false;
 	}
-
-
-
-
-
-	
 
 }
