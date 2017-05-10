@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+import domain.DadosItem;
 import domain.DadosVenda;
 import domain.Item;
 import domain.Venda;
@@ -51,9 +52,10 @@ public class Main {
 	public static void adicionarItem (){
 		
 		Item item = new Item();
+		DadosItem dados = new DadosItem();
 		
-		item = entradaDeDadosItem();
-		if(validarDados(item)){
+		item = dados.entradaDeDadosItem();
+		if(dados.validarDados(item)){
 			ItemDAO salvarItem = new ItemDAO();
 			salvarItem.salvar(item);
 			System.out.println("\n\n\tCadastro concluido com sucesso\n");
@@ -91,39 +93,10 @@ public class Main {
 		itemDAO.listar();
 	}
 	
-	public static boolean validarDados(Item item){
-		if(item.verificarItemNome()){
-			if(item.verificarItemQuantidade()){
-				if(item.verificarItemPrecoCompra()){
-					if(item.verificarItemPrecoVenda()){
-						return true;
-					}
-				}
-			}
-		}
-		return false;
-	}
-	
 
 
 	
-	public static Item entradaDeDadosItem(){
-		
-		Scanner input = new Scanner(System.in);
-		Item item = new Item();
-		
-		System.out.printf("\n\tADICAO DE ITEM\n Insira os seguintes dados\n Nome: ");
-		item.setNome(input.nextLine());
-		System.out.printf("Quantidade: ");
-		item.setQuantidade(input.nextInt());
-		System.out.printf("Preco de Compra: ");
-		item.setPrecoCompra(input.nextDouble());
-		System.out.printf("Preco de Venda: ");
-		item.setPrecoVenda(input.nextDouble());
-		
-		return item;
-	}
-	
+
 
 	
 	public static void exibirRelatorioVendas(){
