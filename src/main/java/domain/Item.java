@@ -117,11 +117,11 @@ public class Item {
 			if(!StringUtils.containsAny(getNome(), '0','1','2','3','4','5','6','7','8','9' )){
 				return true;
 			}else{
-				System.out.println("O nome nao pode conter numeros.");
+				System.out.println("\nERRO: O nome nao pode conter numeros.");
 				return false;
 			}
 		}else{
-			System.out.println("O numero conter mais de 3 letras.");
+			System.out.println("\nERRO: O nome deve conter mais de 3 letras.");
 			return false;
 		}
 	}
@@ -130,7 +130,7 @@ public class Item {
 		if(getQuantidade() > 0 )
 			return true;
 			
-		System.out.println("A quantidade deve ser maior que 0.");	
+		System.out.println("\nERRO: A quantidade deve ser maior que 0.");	
 		return false;
 	}
 	
@@ -138,7 +138,7 @@ public class Item {
 		if(getPrecoCompra() > 0 )
 			return true;
 	
-		System.out.println("O valor de compra deve ser maior que 0.");
+		System.out.println("\nERRO: O valor de compra deve ser maior que 0.");
 		return false;
 	}
 	
@@ -146,7 +146,7 @@ public class Item {
 		if(getPrecoCompra() < getPrecoVenda())
 			return true;
 
-		System.out.println("O valor de venda deve ser superior ao valor de compra");
+		System.out.println("\nERRO: O valor de venda deve ser superior ao valor de compra");
 		return false;
 	}
 

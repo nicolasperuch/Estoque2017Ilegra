@@ -57,12 +57,10 @@ public class Main {
 		item = dados.entradaDeDadosItem();
 		if(dados.validarDados(item)){
 			ItemDAO salvarItem = new ItemDAO();
-			salvarItem.salvar(item);
-			System.out.println("\n\n\tCadastro concluido com sucesso\n");
-		}else{
-			System.out.println("\n\n\tErro no cadastro do item\n");
+			
+			if(salvarItem.salvar(item))
+				System.out.println("\n\n\tCadastro concluido com sucesso\n");
 		}
-		
 	}
 
 	public static void fazerVenda(){

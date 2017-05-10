@@ -31,7 +31,7 @@ public class ItemDAO {
 			
 			return true;
 	    } catch (SQLException ex){
-	    	System.out.println(ex);
+	    	System.out.println("Erro no cadastro do item: "+ex);
 	        	return false;
 		}finally{
 			ConnectionFactory.closeConnection(con, stmt);
