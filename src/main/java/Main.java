@@ -84,8 +84,6 @@ public class Main {
 	
 	public static void exibirEstoque(){
 		ItemDAO itemDAO = new ItemDAO();
-		
-		
 		itemDAO.listar();
 	}
 	

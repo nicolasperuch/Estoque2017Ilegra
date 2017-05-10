@@ -35,38 +35,40 @@ public class VendaDAO {
 	
 	public void listar(){
 		
-		for(Venda venda : getList()){
-			System.out.println(venda.toString());
+		System.out.println("\n\t\t\t\t\tVENDAS\n\nNOME                     QUANTIDADE               GASTO TOTAL              VALOR BRUTO OBTIDO       LUCRO");
+		for(Item item : getList()){
+			System.out.println(item.configurarImpressaoVenda());
 		}
 		
 	}
 	
-	public List <Venda> getList(){
+	public List <Item> getList(){
 		
 		Connection con = ConnectionFactory.getConnection();
 		PreparedStatement stmt = null;
-		List<Venda> vendas = new ArrayList<Venda>();
+		List<Item> itens = new ArrayList<Item>();
 		
 		
 		try{
-			stmt = con.prepareStatement("select * from venda");
+			stmt = con.prepareStatement("select i.nome, v.quantidade, i.preco_compra, i.preco_venda from venda as v  inner join item as i  on v.fk_item = i.id_item");
 			ResultSet rs = stmt.executeQuery();
 			
 			while(rs.next()){
-				Venda novaVenda = new Venda();
+				Item novoItem = new Item();
 				
-				novaVenda.setNome(rs.getString("nome"));
-				novaVenda.setQuantidade(rs.getInt("quantidade"));
-				novaVenda.setPrecoVenda(rs.getDouble("preco_venda"));
+				novoItem.setNome(rs.getString("nome"));
+				novoItem.setQuantidade(rs.getInt("quantidade"));
+				novoItem.setPrecoCompra(rs.getDouble("preco_compra"));
+				novoItem.setPrecoVenda(rs.getDouble("preco_venda"));
 				
-				vendas.add(novaVenda);
+				itens.add(novoItem);
 			}
 			rs.close();
-			return vendas;
+			return itens;
 			
 		}catch(SQLException ex){
 			System.out.println(ex);
-			return vendas;
+			return itens;
 		}finally{
 			ConnectionFactory.closeConnection(con, stmt);
 		}

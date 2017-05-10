@@ -37,7 +37,7 @@ public class Item {
 		this.precoVenda = precoVenda;
 	}
 	
-	public String configurarImpressao() {
+	public String configurarImpressaoEstoque() {
 		int tamanho;
 		int TABULAMENTO = 25;
 		String quantidade;
@@ -68,6 +68,49 @@ public class Item {
 		
 		return  nome + quantidade + precoCompra	+ precoVenda;
 	}
+	
+	public String configurarImpressaoVenda() {
+		int tamanho;
+		int TABULAMENTO = 25;
+		double lucro;
+		String nome;
+		String quantidade;
+		String gastoTotal;
+		String valorBrutoObtido;
+		String lucroPorItem;
+		
+		lucro = this.precoVenda * this.quantidade - this.precoCompra * this.quantidade; 
+		
+		nome = this.nome;
+		tamanho = TABULAMENTO - this.nome.length();
+		for(int i=0; i< tamanho; i++)
+			nome += " ";
+		
+		quantidade = String.valueOf(this.quantidade);
+		tamanho = TABULAMENTO - quantidade.length();
+		for(int i=0; i< tamanho; i++)
+			quantidade += " ";
+		
+		gastoTotal = String.valueOf(this.precoCompra * this.quantidade);
+		tamanho = TABULAMENTO - gastoTotal.length();
+		for(int i=0; i< tamanho; i++)
+			gastoTotal += " ";
+		
+		valorBrutoObtido = String.valueOf(this.precoVenda * this.quantidade);
+		tamanho = TABULAMENTO - valorBrutoObtido.length();
+		for(int i=0; i< tamanho; i++)
+			valorBrutoObtido += " ";
+		
+		lucroPorItem = String.valueOf(lucro);
+		tamanho = TABULAMENTO - lucroPorItem.length();
+		for(int i=0; i< tamanho; i++)
+			lucroPorItem += " ";
+		
+		
+		
+		return  nome + quantidade + gastoTotal + valorBrutoObtido + lucroPorItem;
+	}
+	
 
 	public boolean verificarItemNome(){
 		if(StringUtils.length(getNome()) > 3 ){
@@ -105,6 +148,9 @@ public class Item {
 			return false;
 		}
 	}
+
+
+
 
 
 	

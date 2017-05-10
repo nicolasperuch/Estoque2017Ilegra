@@ -118,7 +118,7 @@ public class ItemDAO {
 		
 		System.out.println("\n\t\t\t\t\tESTOQUE\n\nNOME                     QUANTIDADE               PRECO VENDA              PRECO COMPRA   ");
 		for(Item item : getList()){
-			System.out.println(item.configurarImpressao());
+			System.out.println(item.configurarImpressaoEstoque());
 		}
 		
 	}
