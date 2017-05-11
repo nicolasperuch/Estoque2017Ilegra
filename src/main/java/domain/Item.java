@@ -2,6 +2,8 @@ package domain;
 
 import org.apache.commons.lang3.StringUtils;
 
+import model.dao.ItemDAO;
+
 public class Item {
 
 	private String nome;
@@ -158,4 +160,13 @@ public class Item {
 		System.out.println("\n\t\t\t\t\tESTOQUE\n\nNOME                     QUANTIDADE               PRECO VENDA              PRECO COMPRA   ");
 	}
 
+	public void listar(){
+		ItemDAO itemDAO = new ItemDAO();
+		imprimirCabecario();
+		
+		for(Item item : itemDAO.getList()){
+			System.out.println(item.configurarImpressaoEstoque());
+		}
+		
+	}
 }

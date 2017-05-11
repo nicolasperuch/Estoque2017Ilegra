@@ -114,17 +114,6 @@ public class ItemDAO {
 		}
 	}
 
-	
-	public void listar(){
-		Item cabecario = new Item();
-		cabecario.imprimirCabecario();
-		
-		for(Item item : getList()){
-			System.out.println(item.configurarImpressaoEstoque());
-		}
-		
-	}
-	
 	public List <Item> getList(){
 		
 		Connection con = ConnectionFactory.getConnection();
