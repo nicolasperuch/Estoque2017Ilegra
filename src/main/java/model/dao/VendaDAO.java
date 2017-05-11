@@ -33,7 +33,7 @@ public class VendaDAO {
 		}
 	}
 	
-	public void listar(){
+	/*public void listar(){
 		Venda cabecario = new Venda();
 		cabecario.imprimirCabecario();
 		for(Item item : getList()){
@@ -41,7 +41,7 @@ public class VendaDAO {
 		}
 		
 	}
-	
+	*/
 	public List <Item> getList(){
 		
 		Connection con = ConnectionFactory.getConnection();

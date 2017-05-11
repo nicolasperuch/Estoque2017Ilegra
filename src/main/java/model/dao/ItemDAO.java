@@ -50,7 +50,6 @@ public class ItemDAO {
 				if (rs.getString("nome").equals(venda.getNome())) {
 					item.setNome(rs.getString("nome"));
 					item.setQuantidade(rs.getInt("quantidade"));
-					//item.setPrecoVenda(rs.getDouble("preco_venda"));
 					return item;
 				}
 			}
@@ -88,7 +87,7 @@ public class ItemDAO {
 		
 	}
 
-	public void update(Venda venda,int fkIdItem){
+	public void update(Venda venda, int fkIdItem){
 
 		Item item = new Item();
 		

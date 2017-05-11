@@ -161,10 +161,10 @@ public class Item {
 	}
 
 	public void listar(){
-		ItemDAO itemDAO = new ItemDAO();
+		ItemDAO listaDAO = new ItemDAO();
 		imprimirCabecario();
 		
-		for(Item item : itemDAO.getList()){
+		for(Item item : listaDAO.getList()){
 			System.out.println(item.configurarImpressaoEstoque());
 		}
 		

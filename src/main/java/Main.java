@@ -94,7 +94,7 @@ public class Main {
 	
 
 	public static void exibirRelatorioVendas(){
-		VendaDAO vendaDAO = new VendaDAO();	
-		vendaDAO.listar();	
+		Venda venda = new Venda();	
+		venda.listar();	
 	}
 }

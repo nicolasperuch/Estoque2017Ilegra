@@ -1,5 +1,7 @@
 package domain;
 
+import model.dao.VendaDAO;
+
 public class Venda {
 
 	private String nome;
@@ -24,6 +26,21 @@ public class Venda {
 	public void imprimirCabecario() {
 		System.out.println("\n\t\t\t\t\tVENDAS\n\nNOME                     QUANTIDADE               GASTO TOTAL              VALOR BRUTO OBTIDO       LUCRO");
 	}
+	public boolean listar(){
+		VendaDAO listaDAO = new VendaDAO();
+		imprimirCabecario();
+		for(Item item : listaDAO.getList()){
+			System.out.println(item.configurarImpressaoVenda());
+		}
+		
+		//imprimirTotais();
+		return true;
+	}
 	
+	/*private void imprimirTotais() {
+		
+		
+	}
+	*/
 	
 }
