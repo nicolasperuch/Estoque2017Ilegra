@@ -14,25 +14,50 @@ public class ItemTest {
 	}
 	
 	@Test
-	public void verificarItemNome(){
+	public void verificarItemNomeCorreto(){
 		item.setNome("Cadeira");
 		Assert.assertTrue(item.verificarItemNome());
 	}	
 	@Test
-	public void verificarItemQuantidade(){
+	public void verificarItemNomeComNumero(){
+		item.setNome("Cad31ra");
+		Assert.assertFalse(item.verificarItemNome());
+	}
+	@Test
+	public void verificarItemNomeMenosDe4Letras(){
+		item.setNome("oi");
+		Assert.assertFalse(item.verificarItemNome());
+	}
+	@Test
+	public void verificarItemQuantidadeMaiorQueZero(){
 		item.setQuantidade(1);
 		Assert.assertTrue(item.verificarItemQuantidade());
 	}
 	@Test
-	public void verificarItemPrecoCompra(){
+	public void verificarItemQuantidadeMenorQueZero(){
+		item.setQuantidade(-1);
+		Assert.assertFalse(item.verificarItemQuantidade());
+	}
+	@Test
+	public void verificarItemPrecoCompraPositivo(){
 		item.setPrecoCompra(10);
 		Assert.assertTrue(item.verificarItemPrecoCompra());
 	}
 	@Test
-	public void verificarItemPrecoVenda(){
-		item.setPrecoCompra(15.5);
-		item.setPrecoVenda(15.6);
+	public void verificarItemPrecoCompraNegativo(){
+		item.setPrecoCompra(-1);
+		Assert.assertFalse(item.verificarItemPrecoCompra());
+	}
+	@Test
+	public void verificarItemPrecoVendaMaiorQueCompra(){
+		item.setPrecoCompra(1);
+		item.setPrecoVenda(10);
 		Assert.assertTrue(item.verificarItemPrecoVenda());
-
+	}
+	@Test
+	public void veridicarItemPrecoVendaMenorQueCompra(){
+		item.setPrecoCompra(10);
+		item.setPrecoVenda(1);
+		Assert.assertFalse(item.verificarItemPrecoVenda());
 	}
 }
