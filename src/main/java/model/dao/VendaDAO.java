@@ -33,15 +33,6 @@ public class VendaDAO {
 		}
 	}
 	
-	/*public void listar(){
-		Venda cabecario = new Venda();
-		cabecario.imprimirCabecario();
-		for(Item item : getList()){
-			System.out.println(item.configurarImpressaoVenda());
-		}
-		
-	}
-	*/
 	public List <Item> getList(){
 		
 		Connection con = ConnectionFactory.getConnection();
@@ -60,7 +51,7 @@ public class VendaDAO {
 				novoItem.setQuantidade(rs.getInt("quantidade"));
 				novoItem.setPrecoCompra(rs.getDouble("preco_compra"));
 				novoItem.setPrecoVenda(rs.getDouble("preco_venda"));
-				
+								
 				itens.add(novoItem);
 			}
 			rs.close();

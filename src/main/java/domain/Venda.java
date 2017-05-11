@@ -28,19 +28,13 @@ public class Venda {
 	}
 	public boolean listar(){
 		VendaDAO listaDAO = new VendaDAO();
+		
 		imprimirCabecario();
 		for(Item item : listaDAO.getList()){
 			System.out.println(item.configurarImpressaoVenda());
 		}
 		
-		//imprimirTotais();
 		return true;
 	}
-	
-	/*private void imprimirTotais() {
-		
-		
-	}
-	*/
 	
 }
