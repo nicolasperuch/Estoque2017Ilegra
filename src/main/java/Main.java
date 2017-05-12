@@ -37,7 +37,7 @@ public class Main {
 				break;
 			}
 			
-		}while(escolhaMenu > 0);
+		}while(escolhaMenu != 0);
 		
 		
 	}
