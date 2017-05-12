@@ -19,6 +19,9 @@
 -- Table structure for table `item`
 --
 
+CREATE DATABASE `mydb`;
+USE `mydb`;
+
 DROP TABLE IF EXISTS `item`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
